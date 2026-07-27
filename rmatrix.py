@@ -213,7 +213,7 @@ class rmatrix:
         dstg1 = open('dstg1','w')
         dstg1.write('S.S.\n')
         dstg1.write(f"&STG1A RELOP='YES' &END \n")
-        dstg1.write(f"&STG1B MAXLA={self.lamax} MAXLT={self.MAXLT} MAXC={self.maxc} MAXE={self.maxe} &END \n")
+        dstg1.write(f"&STG1B MAXLA={self.lamax} MAXLT={self.MAXLT} MAXC={self.maxc} MAXE={int(round(self.maxe,0))} &END \n")
 
         dstg1.close()
         
