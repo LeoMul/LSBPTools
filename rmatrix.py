@@ -17,7 +17,7 @@ MINLT_DEFAULT =  0
 import numpy as np 
 
 class rmatrix:
-    def __init__(self,maxc = MAXCDEFAULT, maxe = MAXEDEFAULT, J2MIN=-1,J2MAX = -1, MINST=-1, MAXST=-1, MINLT=0) -> None:
+    def __init__(self,maxc = MAXCDEFAULT, maxe = MAXEDEFAULT, J2MIN=-1,J2MAX = -1, MINST=-1, MAXST=-1) -> None:
         
         self.termsS   = []
         self.termsL   = []
@@ -31,7 +31,6 @@ class rmatrix:
 
         self.maxc     = maxc
         self.maxe     = maxe 
-        self.MINLT    = MINLT 
 
 
 
@@ -144,6 +143,21 @@ class rmatrix:
         triangle inequality, for a requested J2MAX with max multiplicity
         MAXST -  we need to go up to at least this L. 
         '''
+        
+        sarray = [self.MINST]
+        
+        current = self.MINST
+        while (current!= self.MAXST):
+            current +=2 
+            sarray.append(current)
+        
+        sarray = np.array(sarray)
+        sarray = (sarray-1)
+        print(sarray)
+        
+        #minltcheck = int( min( abs(  self.J2MIN - sarray) / 2 ) ) 
+        #print(minltcheck)
+        self.MINLT = int( min( abs(  self.J2MIN - sarray) / 2 ) ) 
         self.MAXLT = int ( ( self.J2MAX + self.MAXST - 1 ) / 2 ) 
 
         self.numcpus_stg2 = (self.MAXLT - self.MINLT + 1) * (self.MAXST - self.MINST + 2)
@@ -154,9 +168,10 @@ class rmatrix:
         print(' J2MAX      = ',self.J2MAX)
         print(' MINST      = ',self.MINST)
         print(' MAXST      = ',self.MAXST)
-        print(' MINLT      = ',self.MINLT)
 
         print('Setting:')
+        
+        print(' MINLT      = ',self.MINLT)
         print(' MAXLT      = ',self.MAXLT)
         print(' NUMCPUSTG2 = ',self.numcpus_stg2)
 
