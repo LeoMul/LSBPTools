@@ -254,11 +254,14 @@ class rmatrix:
         string = ''
         for jj in self.correlationConfigsMins:
             string += '{:>3}'.format(jj)
+        string = self.coreoccstring + string
         string += '\n'
         dstg2.write(string)
         string = ''
         for jj in self.correlationConfigsMaxs:
             string += '{:>3}'.format(jj)
+        string = self.coreoccstring + string
+
         string += '\n'
         dstg2.write(string)
         
@@ -267,6 +270,7 @@ class rmatrix:
             for jj in range(0,len(self.correlationConfigs[ii])):
                 string += '{:>3}'.format(self.correlationConfigs[ii][jj])
             string += '  0\n'
+            string = self.coreoccstring + string
             dstg2.write(string)
             
         dstg2.close()
