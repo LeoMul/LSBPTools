@@ -162,6 +162,11 @@ class rmatrix:
 
         self.numcpus_stg2 = (self.MAXLT - self.MINLT + 1) * (self.MAXST - self.MINST + 2)
 
+        tt = open('stg2cpu')
+        tt.write('{}'.format(self.numcpus_stg2))
+        tt.close()
+        
+        
         print('Input:')
         print(' NELEC      = ',self.NELEC)
         print(' J2MIN      = ',self.J2MIN)

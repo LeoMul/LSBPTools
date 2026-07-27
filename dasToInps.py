@@ -13,7 +13,7 @@ parser = argparse.ArgumentParser()
 
 parser.add_argument('--minst', default=MINST_DEFAULT,  help='Min value of 2S+1',type=int)
 parser.add_argument('--maxst', default=MAXST_DEFAULT,  help='Max value of 2S+1',type=int)
-parser.add_argument('--minlt', default=MINLT_DEFAULT,  help='Min value of L',type=int)
+#parser.add_argument('--minlt', default=MINLT_DEFAULT,  help='Min value of L',type=int)
 parser.add_argument('--j2min', default=J2MIN_DEFAULT,  help='Min value of 2J',type=int)
 parser.add_argument('--j2max', default=J2MAX_DEFAULT,  help='Max value of 2J',type=int)
 parser.add_argument('--maxc',  default=MAXCDEFAULT,  help='Number of continuum orbitals.',type=int)
