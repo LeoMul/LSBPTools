@@ -162,7 +162,7 @@ class rmatrix:
 
         self.numcpus_stg2 = (self.MAXLT - self.MINLT + 1) * (self.MAXST - self.MINST + 2)
 
-        tt = open('stg2cpu')
+        tt = open('stg2cpu','w')
         tt.write('{}'.format(self.numcpus_stg2))
         tt.close()
         
