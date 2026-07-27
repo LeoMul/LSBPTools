@@ -102,6 +102,15 @@ class rmatrix:
         
         self.correlationConfigs = generate_correlation_configurations(self.configsNumpy[:, 0:self.orbitalValenceNum ], self.hardMax)
         
+        self.correlationConfigsNumpy = np.array(self.correlationConfigs)
+        print(self.correlationConfigsNumpy)
+        
+        self.correlationConfigsMaxs = np.max(self.correlationConfigsNumpy,axis=0)
+        self.correlationConfigsMins = np.min(self.correlationConfigsNumpy,axis=0)
+
+        print(self.correlationConfigsMins)
+        print(self.correlationConfigsMaxs)
+        
         return None 
     
 
@@ -228,7 +237,8 @@ class rmatrix:
         dstg2.write(f"&STG2B MAXORB={self.orbitalTotalNum} NELC={self.NELEC} NAST={len(self.termsL)} INAST=0 MINLT={self.MINLT} MAXLT={self.MAXLT} MINST={self.MINST} MAXST={self.MAXST}  &END \n")
         dstg2.write(self.corestrin+self.orbitalString)
         dstg2.write(f'{self.numConfigs}\n')
-
+        dstg2.write(self.coreoccstring+self.minoccline)
+        dstg2.write(self.coreoccstring+self.maxoccline)
         for config in self.configstrings:
             dstg2.write(self.coreoccstring+config)
 
@@ -240,6 +250,17 @@ class rmatrix:
         numcorrelationConfigs = len(self.correlationConfigs)
         
         dstg2.write('{:3}\n'.format(numcorrelationConfigs))
+        
+        string = ''
+        for jj in self.correlationConfigsMins:
+            string += '{:>3}'.format(jj)
+        string += '\n'
+        dstg2.write(string)
+        string = ''
+        for jj in self.correlationConfigsMaxs:
+            string += '{:>3}'.format(jj)
+        string += '\n'
+        dstg2.write(string)
         
         for ii in range(0,numcorrelationConfigs):
             string = ''
