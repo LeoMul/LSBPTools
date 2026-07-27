@@ -227,6 +227,8 @@ class rmatrix:
         dstg2.write(f"&STG2A RELOP='YES' isort=1 &END \n")
         dstg2.write(f"&STG2B MAXORB={self.orbitalTotalNum} NELC={self.NELEC} NAST={len(self.termsL)} INAST=0 MINLT={self.MINLT} MAXLT={self.MAXLT} MINST={self.MINST} MAXST={self.MAXST}  &END \n")
         dstg2.write(self.corestrin+self.orbitalString)
+        dstg2.write(f'{self.numConfigs}\n')
+
         for config in self.configstrings:
             dstg2.write(self.coreoccstring+config)
 
