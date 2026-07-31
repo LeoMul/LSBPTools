@@ -130,12 +130,12 @@ class rmatrix:
             if self.MINST == MINST_DEFAULT:
                 self.MINST = MINST_DEFAULT-1
                 
-        else:
-            #Even number of electrons 
-            #N+1 is then odd.  
-            #scattered 2S+1 is even 
-            #And scattered 2J is odd.
-            self.J2MAX = J2MAX_DEFAULT
+        #else:
+        #    #Even number of electrons 
+        #    #N+1 is then odd.  
+        #    #scattered 2S+1 is even 
+        #    #And scattered 2J is odd.
+        #    self.J2MAX = J2MAX_DEFAULT
 
             
         
